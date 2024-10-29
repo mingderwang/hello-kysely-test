@@ -1,5 +1,5 @@
 import { db } from './database'
-import { PersonUpdate, Person, NewPerson } from './types'
+import type { PersonUpdate, Person, NewPerson } from './types'
 
 export async function findPersonById(id: number) {
   return await db.selectFrom('person')

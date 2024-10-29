@@ -23,6 +23,15 @@ describe('PersonRepository', () => {
   afterAll(async () => {
     await db.schema.dropTable('person').execute()
   })
+
+  test('should create a person', async () => {
+    await PersonRepository.createPerson({
+      first_name: 'Jennifer',
+      last_name: 'Aniston',
+      gender: 'woman',
+      metadata: 'asdf'
+    })
+  })
     
   test('should find a person with a given id', async () => {
     await PersonRepository.findPersonById(123)
@@ -34,14 +43,6 @@ describe('PersonRepository', () => {
     
   test('should update gender of a person with a given id', async () => {
     await PersonRepository.updatePerson(123, { gender: 'woman' })
-  })
-    
-  test('should create a person', async () => {
-    await PersonRepository.createPerson({
-      first_name: 'Jennifer',
-      last_name: 'Aniston',
-      gender: 'woman',
-    })
   })
     
   test('should delete a person with a given id', async () => {

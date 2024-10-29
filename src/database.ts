@@ -1,5 +1,6 @@
 import { Kysely } from 'kysely'
 import { PlanetScaleDialect } from 'kysely-planetscale'
+import { type Database } from  './types'
 
 export const db = new Kysely<Database>({
   dialect: new PlanetScaleDialect({
@@ -8,4 +9,3 @@ export const db = new Kysely<Database>({
     password: process.env.DATABASE_PASSWORD
   })
 })
-
