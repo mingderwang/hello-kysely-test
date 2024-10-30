@@ -43,10 +43,10 @@ export async function updatePerson(id: number, updateWith: PersonUpdate) {
 }
 
 export async function createPerson(person: NewPerson) {
+console.log(person)
   return await db.insertInto('person')
     .values(person)
-    .returningAll()
-    .executeTakeFirstOrThrow()
+    .executeTakeFirst()
 }
 
 export async function deletePerson(id: number) {

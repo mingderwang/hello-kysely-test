@@ -1,4 +1,4 @@
-import {
+import type {
   ColumnType,
   Generated,
   Insertable,
@@ -47,7 +47,7 @@ export interface PersonTable {
     ip: string | null
     agent: string | null
     plan: 'free' | 'premium'
-  }>
+  }> | null
 }
 
 // You should not use the table schema interfaces directly. Instead, you should
