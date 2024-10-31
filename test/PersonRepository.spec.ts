@@ -5,8 +5,10 @@ import { afterAll, afterEach, beforeAll, test, expect, describe } from "bun:test
 
 describe('PersonRepository', () => {
   beforeAll(async () => {
+    await sql`truncate table ${sql.table('person')}`.execute(db)
+    await db.schema.dropTable('person').execute()
   await db.schema.createTable('person')
-  .addColumn('id', 'serial', (cb) => cb.autoIncrement().primaryKey())
+  .addColumn('id', 'serial', (cb) => cb.primaryKey())
   .addColumn('first_name', 'varchar(255)')
   .addColumn('last_name', 'varchar(255)')
   .addColumn('metadata', 'varchar(255)')
